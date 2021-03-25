@@ -1,6 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1147,897" sap2010:WorkflowViewState.IdRef="Test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Test" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_LogFile" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1147,897</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Test_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="50">
+    <scg:List x:TypeArguments="x:String" Capacity="26">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -30,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -57,8 +65,8 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="418,832" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -76,7 +84,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'grouping'" FoundElement="[VarElement]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Type Into" FoundElement="[VarElement]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
         <ui:WaitUiElementAppear.Target>
           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="89228b40-474a-400d-88ef-27dc0238f23b" InformativeScreenshot="fce9e48159f311e79b8a38c6f55516e6" Selector="&lt;wnd app='slack.exe' cls='Chrome_WidgetWin_1' title='Slack | rpa-data-extract | RPA Talend Data Extract' /&gt;&lt;ctrl name='Slack | rpa-data-extract | RPA Talend Data Extract' role='document' /&gt;&lt;ctrl name='Customize and control Slack Slack | rpa-data-extract | RPA Talen*' role='grouping' /&gt;&lt;ctrl name='RPA Talend Data Extract' role='property page' /&gt;&lt;ctrl name='Channel rpa-data-extract' role='grouping' /&gt;&lt;ctrl name='Send a message to rpa-data-extract' role='editable text' /&gt;&lt;ctrl role='grouping' /&gt;">
             <ui:Target.TimeoutMS>
@@ -90,7 +98,9 @@
       </ui:WaitUiElementAppear>
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke _ClearAndType workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\_Type.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+          </InArgument>
           <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
             <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
           </InArgument>
@@ -108,6 +118,9 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_Selector">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">
+            <Literal x:TypeArguments="x:Boolean" />
+          </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -117,7 +130,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'push button'" FoundElement="[VarElement]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Click Element" FoundElement="[VarElement]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
         <ui:WaitUiElementAppear.Target>
           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="805f498d-9377-4538-b070-5f922c988065" InformativeScreenshot="26cb1641ddfe1787d29a7115ae5d3bc7" Selector="&lt;wnd app='slack.exe' cls='Chrome_WidgetWin_1' title='Slack | rpa-data-extract | RPA Talend Data Extract' /&gt;&lt;ctrl name='Slack | rpa-data-extract | RPA Talend Data Extract' role='document' /&gt;&lt;ctrl name='Customize and control Slack Slack | rpa-data-extract | RPA Talen*' role='grouping' /&gt;&lt;ctrl name='RPA Talend Data Extract' role='property page' /&gt;&lt;ctrl name='Channel rpa-data-extract' role='grouping' /&gt;&lt;ctrl name='rpa-data-extract' role='push button' /&gt;">
             <ui:Target.TimeoutMS>

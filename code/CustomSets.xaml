@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Test" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Test" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_LogFile" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,1007</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1147,2795</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Test_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -69,16 +69,23 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="568,902" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Copy Paste the Following" sap:VirtualizedContainerService.HintSize="568,2730" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:UiElement" Name="VarElement" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Type" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Type" sap:VirtualizedContainerService.HintSize="526,450" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="VarString" />
       </Sequence.Variables>
@@ -131,12 +138,12 @@
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
           <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">
-            <Literal x:TypeArguments="x:Boolean" />
+            <Literal x:TypeArguments="x:Boolean" Value="True" />
           </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="Click" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Click" sap:VirtualizedContainerService.HintSize="526,350" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -170,16 +177,19 @@
           <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
             <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
           </InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">
+            <Literal x:TypeArguments="x:Boolean" Value="True" />
+          </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="Wait Element" sap:VirtualizedContainerService.HintSize="526,598" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Wait Element" sap:VirtualizedContainerService.HintSize="526,608" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="VarBool" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -209,13 +219,127 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
           </InArgument>
-          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found" />
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">
+            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
+          </OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <If Condition="[VarBool]" DisplayName="If Element Not Found" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
-        <If.Then>
+      <If Condition="[VarBool]" DisplayName="If Element" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
           <Throw Exception="[New Exception(&quot;Element not found.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
-        </If.Then>
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Wait Vanish Element" sap:VirtualizedContainerService.HintSize="526,608" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="VarBool" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Wait" FoundElement="[VarElement]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_5">
+        <ui:WaitUiElementAppear.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="805f498d-9377-4538-b070-5f922c988065" InformativeScreenshot="26cb1641ddfe1787d29a7115ae5d3bc7" Selector="&lt;wnd app='slack.exe' cls='Chrome_WidgetWin_1' title='Slack | rpa-data-extract | RPA Talend Data Extract' /&gt;&lt;ctrl name='Slack | rpa-data-extract | RPA Talend Data Extract' role='document' /&gt;&lt;ctrl name='Customize and control Slack Slack | rpa-data-extract | RPA Talen*' role='grouping' /&gt;&lt;ctrl name='RPA Talend Data Extract' role='property page' /&gt;&lt;ctrl name='Channel rpa-data-extract' role='grouping' /&gt;&lt;ctrl name='rpa-data-extract' role='push button' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:WaitUiElementAppear.Target>
+      </ui:WaitUiElementAppear>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke _WaitElement workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\_WaitVanishElement.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Selector">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
+            <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_Seconds">
+            <Literal x:TypeArguments="x:Int32" Value="120" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">
+            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
+          </OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <If Condition="[VarBool]" DisplayName="If Element" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <Throw Exception="[New Exception(&quot;Element not found.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Search Folder / Delete Files" sap:VirtualizedContainerService.HintSize="526,462" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="VarBool" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke _FileSearchAndDelete workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\_FileSearchAndDelete.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_in_Seconds">
+            <Literal x:TypeArguments="x:Int32" Value="300" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Folder" />
+          <OutArgument x:TypeArguments="x:String" x:Key="out_FirstMatchPath" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+          </InArgument>
+          <InArgument x:TypeArguments="s:String[]" x:Key="out_Files" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_SearchFilter">
+            <Literal x:TypeArguments="x:String">*</Literal>
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_DeleteFilter">
+            <Literal x:TypeArguments="x:String">*</Literal>
+          </InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_DeleteFiles">
+            <Literal x:TypeArguments="x:Boolean" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchFiles">
+            <Literal x:TypeArguments="x:Boolean" Value="True" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_FileFound">
+            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
+          </OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <If Condition="[VarBool]" DisplayName="If Element" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <Throw Exception="[New Exception(&quot;File/s not found.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+        </If.Else>
       </If>
     </Sequence>
   </Sequence>

@@ -5310,8 +5310,8 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "NikkoFramework",
-      "projectName": "NikkoFramework",
+      "projectUniqueName": "NFramework",
+      "projectName": "NFramework",
       "projectPath": "D:\\Git\\UiPath\\UiPath-NFramework\\code\\.local",
       "packagesPath": "C:\\Users\\NIKKO\\.nuget\\packages\\",
       "outputPath": "D:\\Git\\UiPath\\UiPath-NFramework\\code\\.local"

@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,2795</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1103,2795</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Test_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -117,29 +117,17 @@
       </Assign>
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke _ClearAndType workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\_Type.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-          </InArgument>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
-            <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseTab">
-            <Literal x:TypeArguments="x:Boolean" Value="True" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">[VarElement]</InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseTab">True</InArgument>
           <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Success" />
           <OutArgument x:TypeArguments="x:String" x:Key="out_TypedText" />
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetry">
-            <Literal x:TypeArguments="x:Int32" Value="3" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_TextToType">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VarString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetry">3</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_TextToType">[VarString]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_Selector">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
-          <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">
-            <Literal x:TypeArguments="x:Boolean" Value="True" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">True</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -180,6 +168,13 @@
           <InArgument x:TypeArguments="x:Boolean" x:Key="in_Focus">
             <Literal x:TypeArguments="x:Boolean" Value="True" />
           </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxRetry">
+            <Literal x:TypeArguments="x:Int32" Value="3" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Verification_Method">
+            <Literal x:TypeArguments="x:Int32" />
+          </InArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Wait_for_Element" />
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -210,18 +205,10 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_Selector">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
-            <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_Seconds">
-            <Literal x:TypeArguments="x:Int32" Value="120" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">
-            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
-          </OutArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">[VarElement]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_Seconds">120</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">[VarBool]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <If Condition="[VarBool]" DisplayName="If Element" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_1">
@@ -262,18 +249,10 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_Selector">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">
-            <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="VarElement" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_Seconds">
-            <Literal x:TypeArguments="x:Int32" Value="120" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">
-            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
-          </OutArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Element">[VarElement]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_Seconds">120</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Found">[VarBool]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <If Condition="[VarBool]" DisplayName="If Element" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_2">
@@ -300,30 +279,16 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke _FileSearchAndDelete workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\_FileSearchAndDelete.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_in_Seconds">
-            <Literal x:TypeArguments="x:Int32" Value="300" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeOut_in_Seconds">300</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_Folder" />
           <OutArgument x:TypeArguments="x:String" x:Key="out_FirstMatchPath" />
-          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
           <InArgument x:TypeArguments="s:String[]" x:Key="out_Files" />
-          <InArgument x:TypeArguments="x:String" x:Key="in_SearchFilter">
-            <Literal x:TypeArguments="x:String">*</Literal>
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_DeleteFilter">
-            <Literal x:TypeArguments="x:String">*</Literal>
-          </InArgument>
-          <InArgument x:TypeArguments="x:Boolean" x:Key="in_DeleteFiles">
-            <Literal x:TypeArguments="x:Boolean" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchFiles">
-            <Literal x:TypeArguments="x:Boolean" Value="True" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_FileFound">
-            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="VarBool" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SearchFilter">*</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_DeleteFilter">*</InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_DeleteFiles">False</InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchFiles">True</InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_FileFound">[VarBool]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CustomClearAndType" this:CustomClearAndType.in_UseTab="True" this:CustomClearAndType.in_MaxRetry="3" this:CustomClearAndType.in_Focus="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CustomClearAndType" this:CustomClearAndType.in_UseTab="True" this:CustomClearAndType.in_MaxRetry="3" this:CustomClearAndType.in_Focus="True" this:CustomClearAndType.in_Timeout="2000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_LogFile" Type="InArgument(x:String)" />
     <x:Property Name="in_Element" Type="InArgument(ui:UiElement)" />
@@ -9,6 +9,7 @@
     <x:Property Name="in_TextToType" Type="InArgument(x:String)" />
     <x:Property Name="in_Selector" Type="InArgument(x:String)" />
     <x:Property Name="in_Focus" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
   </x:Members>
   <this:CustomClearAndType.in_Selector>
     <InArgument x:TypeArguments="x:String">
@@ -103,11 +104,17 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="1253,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="1253,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">["Typing to Element: " + in_Selector + in_Element.Selector.ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Typing to Element: &quot; + in_Selector + in_Element.Selector.ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
+          <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign sap:VirtualizedContainerService.HintSize="1253,60" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -138,9 +145,15 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="526,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">[String.Format("[Attempt #{0}] Typing: {1}", counter.ToString, in_TextToType)]</InArgument>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;[Attempt #{0}] Typing: {1}&quot;, counter.ToString, in_TextToType)" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
+                    <Literal x:TypeArguments="x:Boolean" Value="True" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <Sequence DisplayName="Pre-Type" sap:VirtualizedContainerService.HintSize="526,444" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -171,7 +184,7 @@
                     </ui:SetFocus>
                   </If.Then>
                 </If>
-                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="200" DisplayName="Click: Element" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -183,21 +196,12 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="92134f8d-ba89-4b0e-b1b2-0763b9c2fb15" Selector="[in_Selector]">
-                      <ui:Target.TimeoutMS>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:Target.TimeoutMS>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ba70d0d6-d036-48d1-b61e-11c89cb5d290" Selector="[in_Selector]" TimeoutMS="[in_Timeout]">
                       <ui:Target.WaitForReady>
                         <InArgument x:TypeArguments="ui:WaitForReady" />
                       </ui:Target.WaitForReady>
                     </ui:Target>
                   </ui:Click.Target>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
                 </ui:Click>
               </Sequence>
               <Sequence DisplayName="Clear Field" sap:VirtualizedContainerService.HintSize="526,520" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -330,9 +334,15 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="526,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">[String.Format("[Attempt #{0}] Typing: {1}", counter.ToString, in_TextToType)]</InArgument>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;[Attempt #{0}] Typing: {1}&quot;, counter.ToString, in_TextToType)" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
+                    <Literal x:TypeArguments="x:Boolean" Value="True" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <Sequence DisplayName="Pre-Type" sap:VirtualizedContainerService.HintSize="526,444" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -363,7 +373,7 @@
                     </ui:SetFocus>
                   </If.Then>
                 </If>
-                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayMS="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="200" DisplayName="Click: Element" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -375,21 +385,12 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[in_Element]" Id="92134f8d-ba89-4b0e-b1b2-0763b9c2fb15">
-                      <ui:Target.TimeoutMS>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:Target.TimeoutMS>
+                    <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[in_Element]" Id="d9f549f8-b958-4911-a872-330800b30163" TimeoutMS="[in_Timeout]">
                       <ui:Target.WaitForReady>
                         <InArgument x:TypeArguments="ui:WaitForReady" />
                       </ui:Target.WaitForReady>
                     </ui:Target>
                   </ui:Click.Target>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
                 </ui:Click>
               </Sequence>
               <Sequence DisplayName="Clear Field" sap:VirtualizedContainerService.HintSize="526,520" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -543,11 +544,17 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="1253,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="1253,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">["Typed to Element: " + out_Success.ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Typed to Element: &quot; + out_Success.ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
+          <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

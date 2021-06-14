@@ -1,3 +1,0 @@
-﻿[05-07-21 11:11:47 AM] Initiating..
-[05-07-21 11:11:47 AM] Init success.
-[05-07-21 11:11:48 AM] Process successfully transacted.

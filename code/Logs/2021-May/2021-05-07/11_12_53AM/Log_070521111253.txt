@@ -1,3 +1,0 @@
-﻿[05-07-21 11:12:54 AM] Initiating..
-[05-07-21 11:12:54 AM] Init success.
-[05-07-21 11:12:54 AM] System exception during process: The given key was not present in the dictionary. at Source: System Exception

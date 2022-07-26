@@ -1606,7 +1606,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.6.1/win7-x86": {
+    ".NETFramework,Version=v4.6.1/win10-x64": {
       "AForge/2.2.5": {
         "type": "package",
         "compile": {
@@ -5095,15 +5095,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NIKKO\\.nuget\\packages\\": {}
+    "C:\\Users\\nikko\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "NFramework",
       "projectName": "NFramework",
-      "projectPath": "D:\\Git\\UiPath\\UiPath-NFramework\\code\\.local",
-      "packagesPath": "C:\\Users\\NIKKO\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\UiPath\\UiPath-NFramework\\code\\.local"
+      "projectPath": "D:\\Git\\UiPath\\UiPath_DAPFramework\\code\\.local",
+      "packagesPath": "C:\\Users\\nikko\\.nuget\\packages\\",
+      "outputPath": "D:\\Git\\UiPath\\UiPath_DAPFramework\\code\\.local"
     },
     "frameworks": {
       "net461": {
@@ -5129,7 +5129,12 @@
             "version": "[20.10.6, 20.10.6]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\NIKKO\\AppData\\Local\\UiPath\\app-21.2.0-beta0044\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\nikko\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+      }
+    },
+    "runtimes": {
+      "win10-x64": {
+        "#import": []
       }
     }
   }

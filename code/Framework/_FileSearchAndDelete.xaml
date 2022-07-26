@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,896</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1123,896</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>__WaitForFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -160,7 +160,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">200,550 328,550 328,586.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Delete Files" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence DisplayName="Delete Files" sap:VirtualizedContainerService.HintSize="554,813" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -173,24 +173,24 @@
                             <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
-                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="512,492" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(in_Folder, in_DeleteFilter)]">
+                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="512,569" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(in_Folder, in_DeleteFilter)]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="x:String">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:String" Name="file" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,358" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,435" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,266" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,343" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                                   <TryCatch.Try>
-                                    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[file]" />
+                                    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[file]" />
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,181" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -201,6 +201,19 @@
                                         <ActivityAction.Argument>
                                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                         </ActivityAction.Argument>
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Error: &quot; + exception.Message" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
+                                              <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                            </InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                        </ui:InvokeWorkflowFile>
                                       </ActivityAction>
                                     </Catch>
                                   </TryCatch.Catches>
@@ -316,7 +329,7 @@
                                       <av:Size x:Key="ShapeSize">200,66</av:Size>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="End" sap:VirtualizedContainerService.HintSize="526,804" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <Sequence DisplayName="End" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -332,15 +345,9 @@
                                       <If.Then>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;Path: {0} does not exists!&quot;, in_Folder)" />
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
-                                              <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">[String.Format("Path: {0} does not exists!", in_Folder)]</InArgument>
+                                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                       </If.Then>
@@ -355,30 +362,18 @@
                                       <If.Then>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-                                              <Literal x:TypeArguments="x:String">File not found! Timeout!</Literal>
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
-                                              <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">File not found! Timeout!</InArgument>
+                                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                       </If.Then>
                                     </If>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Logger workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\Logger.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogFile" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="If(in_SearchFiles, &quot;File found: &quot; + out_FileFound.ToString, &quot;Folder utility completed&quot;)" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">
-                                          <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[in_LogFile]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">[If(in_SearchFiles, "File found: " + out_FileFound.ToString, "Folder utility completed")]</InArgument>
+                                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_Verbose">True</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
